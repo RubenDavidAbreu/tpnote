@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Personal Information</h1>
+
+    <table>
+        <tr>
+            <th>Username</th>
+            <td>{{ user.username }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ user.email }}</td>
+        </tr>
+        <!-- Add more fields as necessary -->
+    </table>
+
+    <a href="{{ path('reservation_index') }}">Back to Reservations</a>
+    <button onclick="window.location.href='/logout'">Se déconnecter</button>
+{% endblock %}

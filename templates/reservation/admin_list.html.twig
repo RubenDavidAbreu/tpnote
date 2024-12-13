@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des réservations</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Utilisateur</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.id }}</td>
+                    <td>{{ reservation.date|date('Y-m-d') }}</td>
+                    <td>{{ reservation.description }}</td>
+                    <td>{{ reservation.user.email }}</td>
+                    <td>{{ reservation.status }}</td>
+                    <td>
+                        {% if reservation.status != 'validated' %}
+                            <a href="{{ path('admin_reservation_validate', {id: reservation.id}) }}">Valider</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('reservation_index') }}">Back to Reservations</a>
+    <button onclick="window.location.href='/logout'">Se déconnecter</button>
+{% endblock %}

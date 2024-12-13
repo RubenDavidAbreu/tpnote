@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Create Reservation</h1>
+    {{ form_start(form) }}
+        {{ form_row(form.date) }}
+        {{ form_row(form.timeSlot) }}
+        {{ form_row(form.eventName) }}
+        {{ form_row(form.description) }}
+        <button type="submit">Create</button>
+    {{ form_end(form) }}
+    <a href="{{ path('reservation_index') }}">Back to Reservations</a>
+    <button onclick="window.location.href='/logout'">Se déconnecter</button>
+{% endblock %}
